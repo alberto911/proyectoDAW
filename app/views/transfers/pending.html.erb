@@ -1,0 +1,26 @@
+<h2>Transferencias pendientes para <%= params[:phone_number] %></h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Para</th>
+      <th>Enviado por</th>
+      <th>Fecha</th>
+      <th>Cantidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transfers.each do |transfer| %>
+      <tr>
+        <td>
+          <%= link_to(get_transfer_code_path(transfer.id), method: :get, class: "link-unstyled") do %>
+            <%= transfer.receiver.name %> <%= transfer.receiver.last_name %>
+          <% end %>
+        </td>
+        <td><%= transfer.sender.user.name %> <%= transfer.sender.user.last_name %></td>
+        <td><%= transfer.created_at %></td>
+        <td>$<%= transfer.amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "<< Atrás", search_transfers_path %>

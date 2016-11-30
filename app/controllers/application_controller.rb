@@ -4,15 +4,22 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :logged_in?
 
-  def authenticate
-    unless logged_in?
+  def authenticate_admin
+    unless logged_in? and current_user.userable.is_admin
+      flash[:danger] = "Por favor inicia sesión."
+      redirect_to login_path
+    end
+  end
+
+  def authenticate_clerk
+    unless logged_in? and current_user.userable_type == 'Employee' and not current_user.userable.is_admin
       flash[:danger] = "Por favor inicia sesión."
       redirect_to login_path
     end
   end
 
   def authorize(id)
-    unless logged_in? and current_user.userable_id == id.to_i
+    unless logged_in? and current_user.userable_type == 'Sender' and current_user.userable_id == id.to_i
       session[:user_id] = nil
       flash[:danger] = "Por favor inicia sesión."
       redirect_to login_path

@@ -12,7 +12,7 @@
       <tr>
         <td><%= transfer.created_at.to_date %></td>
         <td>$<%= transfer.amount %></td>
-        <td><%= transfer.recibido ? 'Recibido' : 'Enviado' %></td>
+        <td><%= transfer.received ? 'Recibido' : 'Enviado' %></td>
       </tr>
     <% end %>
   </tbody>

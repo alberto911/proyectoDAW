@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<div class="row">
+  <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <%= form_tag complete_transfer_path(@transfer.id) do %>
+      <h2>Completar la transferencia</h2>
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="form-group">
+            <%= label_tag :code, 'Código de seguridad' %>
+            <%= text_field_tag 'code', nil, class: 'form-control input-lg', placeholder: 'Código', required: true %>
+          </div>
+        </div>
+      </div>
+      <hr class="colorgraph">
+        <div class="row">
+          <%= submit_tag('Completar', class: "btn btn-success") %>
+        </div>
+    <% end %>
+    <%= link_to "<< Atrás", search_transfers_path %>
+  </div>
+</div>

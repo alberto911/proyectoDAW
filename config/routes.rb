@@ -19,6 +19,11 @@ Rails.application.routes.draw do
 
   resources :employees
 
+  get '/transfers/search', to: "transfers#search", as: :search_transfers
+  post '/transfers/search', to: "transfers#pending", as: :pending_transfers
+  get '/transfers/:id/complete', to: "transfers#get_code", as: :get_transfer_code
+  post '/transfers/:id/complete', to: "transfers#complete_transfer", as: :complete_transfer
+
   get '/login', to:"logins#new"
   post '/login', to:"logins#create"
   get '/logout', to:"logins#destroy"

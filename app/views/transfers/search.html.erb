@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<div class="row">
+  <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <%= form_tag pending_transfers_path do %>
+      <h2>Buscar transferencias</h2>
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="form-group">
+            <%= label_tag :phone_number, 'Celular' %>
+            <%= text_field_tag 'phone_number', nil, class: 'form-control input-lg', placeholder: 'Celular', required: true %>
+          </div>
+        </div>
+      </div>
+      <hr class="colorgraph">
+        <div class="row">
+          <%= submit_tag('Buscar', class: "btn btn-success") %>
+        </div>
+    <% end %>
+  </div>
+</div>

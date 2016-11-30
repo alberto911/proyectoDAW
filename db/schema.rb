@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129231410) do
+ActiveRecord::Schema.define(version: 20161130003559) do
 
   create_table "employees", force: true do |t|
     t.boolean  "is_admin",   default: false
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20161129231410) do
     t.decimal  "amount",      precision: 10, scale: 2
     t.datetime "created_at"
     t.string   "code"
-    t.boolean  "recibido",                             default: false
+    t.boolean  "received",                             default: false
   end
 
   create_table "users", force: true do |t|

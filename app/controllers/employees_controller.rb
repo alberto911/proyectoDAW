@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate_admin
 
   def new
     @user = User.new
@@ -22,12 +22,7 @@ class EmployeesController < ApplicationController
   end
 
   def show
-    @user = current_user
-    respond_to do |format|
-      format.html
-      format.json { render :json => @user.to_json }
-      format.xml { render :xml => @user.to_xml }
-    end
+    
   end
 
   private

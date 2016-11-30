@@ -25,4 +25,8 @@ class Sender < ActiveRecord::Base
     end
     query
   end
+
+  def is_admin
+    false
+  end
 end
