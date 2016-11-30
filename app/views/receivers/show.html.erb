@@ -1,0 +1,20 @@
+<h2>Transferencias a <%= @receiver.name %> <%= @receiver.last_name %></h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Cantidad</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transfers.each do |transfer| %>
+      <tr>
+        <td><%= transfer.created_at.to_date %></td>
+        <td>$<%= transfer.amount %></td>
+        <td><%= transfer.recibido ? 'Recibido' : 'Enviado' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "<< Atrás", sender_path(params[:sender_id]) %>

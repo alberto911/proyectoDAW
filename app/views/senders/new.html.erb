@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <%= form_for(@user, url: senders_path) do |f| %>
+      <h2>Regístrate <small>Es grátis</small></h2>
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <%= f.label :name, 'Nombre' %>
+            <%= f.text_field :name, class: 'form-control input-lg', placeholder: 'Nombre' %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <%= f.label :last_name, 'Apellido' %>
+            <%= f.text_field :last_name, class: 'form-control input-lg', placeholder: 'Apellido'  %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="form-group">
+            <%= f.label :mail, 'Mail' %>
+            <%= f.text_field :mail, class: 'form-control input-lg', placeholder: 'E-Mail'  %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="form-group">
+            <%= f.label :password, 'Contraseña' %>
+            <%= f.password_field :password, class: 'form-control input-lg', placeholder: 'Contraseña'  %>
+          </div>
+        </div>
+      </div>
+      <hr class="colorgraph">
+        <div class="row">
+          <%= f.submit(@user.new_record? ? 'Register' : 'Edit Profile', class: "btn btn-success") %>
+        </div>
+    <% end %>
+    <%= link_to "<< Atrás", root_path %>
+  </div>
+</div>

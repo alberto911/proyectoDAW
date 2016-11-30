@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Celular</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% receivers.each do |receiver| %>
+      <tr>
+        <td>
+          <%= link_to(sender_receiver_path(sender.id, receiver.id), method: :get, class: "link-unstyled") do %>
+            <%= receiver.name %> <%= receiver.last_name %>
+          <% end %>
+        </td>
+        <td><%= receiver.phone_number %></td>
+        <td>
+          <%= link_to(sender_receiver_path(sender.id, receiver.id), method: :delete, class: "link-unstyled") do %>
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

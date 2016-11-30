@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<div class="row">
+  <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <%= form_for [@sender, @operation] do |f| %>
+      <h2>Haz un retiro</h2>
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="form-group">
+            <%= f.label :amount, 'Cantidad' %>
+            <%= f.number_field :amount, min: 0.01, step: 0.01, class: 'form-control input-lg', placeholder: 'Cantidad', required: true  %>
+          </div>
+        </div>
+      </div>
+      <%= hidden_field_tag 'type', 'withdrawal' %>
+      <hr class="colorgraph">
+        <div class="row">
+          <%= f.submit('Enviar', class: "btn btn-success") %>
+        </div>
+    <% end %>
+    <%= link_to "<< Atrás", sender_path(@sender.id) %>
+  </div>
+</div>

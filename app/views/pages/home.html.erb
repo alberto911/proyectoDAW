@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+  <div class="jumbotron">
+    <h1>Bienvenido!</h1>
+    <p>MON€YTRAN$ es el sistema más sencillo para mandar dinero a tus conocidos que se encuentran fuera de tu país.</p>
+    <p><%= link_to "Regístrate", new_sender_path, class:'btn btn-primary btn-lg' %></p>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= image_tag("pages/ex.png", :alt => "rss feed",width: '150') %>
+        <div class="caption">
+          <h3>No importa el tipo de moneda</h3>
+          <p>Tú puedes ingresar tu dinero en dólares y las demás personas lo van a recibir en la moneda del país en el que se encuentren sin nungún cargo extra.</p>
+          <p><a href="/login" class="btn btn-primary" role="button">Log In</a> <a href="#" class="btn btn-default" role="button">Más Info</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= image_tag("pages/bank.png", :alt => "rss feed",width: '150') %>
+        <div class="caption">
+          <h3>Sin bancos</h3>
+          <p>No necesitas estár afiliado a ningún banco para poder hacer las transferencias y no se te cobrará ninguna comisión extra por depósito ni por retiro.</p>
+          <p><a href="/login" class="btn btn-primary" role="button">Log In</a> <a href="#" class="btn btn-default" role="button">Más Info</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= image_tag("pages/security.png", :alt => "rss feed",width: '150') %>
+        <div class="caption">
+          <h3>Seguridad</h3>
+          <p>Tu dinero se encuentra asegurado ya que nuestros grandes desarrolladores han habilitado muchos sistemas de seguridad para que tú estés tranquilo.</p>
+          <p><a href="/login" class="btn btn-primary" role="button">Log In</a> <a href="#" class="btn btn-default" role="button">Más Info</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>
