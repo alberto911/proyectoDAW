@@ -29,4 +29,8 @@ class Sender < ActiveRecord::Base
   def is_admin
     false
   end
+
+  def self.total
+    Sender.sum(:money)
+  end
 end

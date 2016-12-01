@@ -12,7 +12,7 @@ class EmployeesController < ApplicationController
       @user.userable = employee
       if @user.save
         flash[:success] = "Empleado creado exitosamente."
-        redirect_to root_path
+        redirect_to dashboard_path
       else
         render 'new'
       end
@@ -22,7 +22,23 @@ class EmployeesController < ApplicationController
   end
 
   def show
-    
+  end
+
+  def destroy
+    employee = Employee.find(params[:id])
+    employee.user.destroy
+    employee.destroy
+    flash[:success] = "Se eliminó correctamente al empleado."
+    redirect_to :back
+  end
+
+  def index
+    @employees = Employee.where.not(id: current_user.userable_id)
+    respond_to do |format|
+      format.html
+      format.json { render :json => @employees.to_json }
+      format.xml { render :xml => @employees.to_xml } 
+    end
   end
 
   private

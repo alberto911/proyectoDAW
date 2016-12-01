@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Mail</th>
+      <th>Rol</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% employees.each do |employee| %>
+      <tr>
+        <td>
+          <%= employee.user.name %> <%= employee.user.last_name %>
+        </td>
+        <td><%= employee.user.mail %></td>
+        <td><%= employee.is_admin ? 'Administrador' : 'Cajero' %></td>
+        <td>
+          <%= link_to(employee_path(employee.id), method: :delete, class: "link-unstyled") do %>
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

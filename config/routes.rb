@@ -28,6 +28,12 @@ Rails.application.routes.draw do
   post '/login', to:"logins#create"
   get '/logout', to:"logins#destroy"
 
+  get '/dashboard', to:"pages#dashboard"
+  get '/transfers/daily_amounts', to:"transfers#daily_amounts"
+  get '/transfers/daily_number', to:"transfers#daily_number"
+  get '/operations/daily_amounts', to:"operations#daily_amounts"
+  get '/operations/daily_number', to:"operations#daily_number"
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

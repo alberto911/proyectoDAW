@@ -11,7 +11,7 @@
     <% @transfers.each do |transfer| %>
       <tr>
         <td><%= transfer.created_at.to_date %></td>
-        <td>$<%= transfer.amount %></td>
+        <td>$<%= GoogCurrency.btc_to_mxn(GoogCurrency.usd_to_btc(transfer.amount)) %></td>
         <td><%= transfer.received ? 'Recibido' : 'Enviado' %></td>
       </tr>
     <% end %>

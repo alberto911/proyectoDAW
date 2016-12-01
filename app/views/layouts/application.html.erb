@@ -27,7 +27,7 @@
           <% if current_user.userable_type == 'Sender' %>
             <li><%= link_to 'Perfil', sender_path(current_user) %></li>
           <% elsif current_user.userable.is_admin %>
-            <li><%= link_to 'Dashboard', new_employee_path %></li>
+            <li><%= link_to 'Dashboard', dashboard_path %></li>
           <% else %>
             <li><%= link_to 'Buscar', search_transfers_path %></li>
           <% end %>

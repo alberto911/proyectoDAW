@@ -1,7 +1,8 @@
 class OperationsController < ApplicationController
-  before_action do
+  before_action except: [:daily_amounts, :daily_number] do
     authorize(params[:sender_id])
   end
+  before_action :authenticate_admin, only: [:daily_amounts, :daily_number]
 
   def index
     @sender = current_user.userable
@@ -41,6 +42,14 @@ class OperationsController < ApplicationController
       flash[:danger] = "La cantidad excede el total de tu cuenta."
       redirect_to sender_path(@sender.id) 
     end
+  end
+
+  def daily_amounts
+    render json: Operation.daily_amounts 
+  end
+
+  def daily_number
+    render json: Operation.daily_number.chart_json
   end
 
   private

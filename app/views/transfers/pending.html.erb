@@ -18,7 +18,7 @@
         </td>
         <td><%= transfer.sender.user.name %> <%= transfer.sender.user.last_name %></td>
         <td><%= transfer.created_at %></td>
-        <td>$<%= transfer.amount %></td>
+        <td>$<%= GoogCurrency.btc_to_mxn(GoogCurrency.usd_to_btc(transfer.amount)) %></td>
       </tr>
     <% end %>
   </tbody>

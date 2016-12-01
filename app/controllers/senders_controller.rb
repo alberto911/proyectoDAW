@@ -25,6 +25,8 @@ class SendersController < ApplicationController
 
   def show
     @user = current_user
+	@bitcoin = GoogCurrency.usd_to_btc(@user.userable.money) 
+    @pesos = GoogCurrency.btc_to_mxn(@bitcoin)
     respond_to do |format|
       format.html
       format.json { render :json => @user.to_json }

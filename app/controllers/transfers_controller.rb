@@ -2,7 +2,8 @@ class TransfersController < ApplicationController
   before_action only: [:index, :new, :create] do
     authorize(params[:sender_id])
   end
-  before_action :authenticate_clerk, except: [:index, :new, :create]
+  before_action :authenticate_clerk, except: [:index, :new, :create, :daily_amounts, :daily_number]
+  before_action :authenticate_admin, only: [:daily_amounts, :daily_number]
 
   def index
     @sender = current_user.userable
@@ -25,6 +26,7 @@ class TransfersController < ApplicationController
     @sender = current_user.userable
 
     if @sender.enough_money?(-@transfer.amount)
+      @transfer.amount *= 0.97
       if @transfer.save
         @sender.transfers << @transfer
         @sender.update_money(-@transfer.amount)
@@ -66,12 +68,21 @@ class TransfersController < ApplicationController
     transfer = Transfer.find(params[:id])
     if transfer.code == params[:code]
       transfer.update_attribute(:received, true)
-      flash[:success] = "Se ha completado la transferencia de $" + transfer.amount.to_s
+      transfer.receiver.update_money(-transfer.amount)
+      flash[:success] = "Se ha completado la transferencia de $" + GoogCurrency.btc_to_mxn(GoogCurrency.usd_to_btc(transfer.amount)).to_s
       redirect_to search_transfers_path
     else
       flash[:danger] = "Código de seguridad incorrecto."
       redirect_to get_transfer_code_path(transfer.id)
     end 
+  end
+
+  def daily_amounts
+    render json: Transfer.daily_amounts 
+  end
+
+  def daily_number
+    render json: Transfer.daily_number 
   end
 
   private

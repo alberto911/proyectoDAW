@@ -10,7 +10,7 @@ class LoginsController < ApplicationController
       if user.userable_type == 'Sender'
         redirect_to sender_path(user.userable_id)
       elsif user.userable.is_admin
-        redirect_to new_employee_path
+        redirect_to dashboard_path
       else
         redirect_to search_transfers_path
       end

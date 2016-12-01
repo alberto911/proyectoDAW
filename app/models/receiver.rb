@@ -9,4 +9,8 @@ class Receiver < ActiveRecord::Base
   def update_money(amount)
     self.update_attribute(:money, self.money + amount)
   end
+
+  def self.total
+    Receiver.sum(:money)
+  end
 end
